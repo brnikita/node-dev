@@ -26,7 +26,7 @@ function walk(filename, callback) {
 	if(stats.isFile() && filename.match(/\.js$/)) {
 		callback(filename);
 	}
-	else if(stats.isDirectory()) {
+	else if(stats.isDirectory() && filename != 'node_modules') {
 		fs.readdir(filename, function(err, files) {
 			files.forEach(function(f) {
 				fs.realpath(filename + '/' + f, function(err, path) {
